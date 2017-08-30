@@ -14,7 +14,6 @@ import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
-
 // This is broken.
 public class C_glist extends FCommand {
 

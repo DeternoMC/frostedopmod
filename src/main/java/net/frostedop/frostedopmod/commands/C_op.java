@@ -19,18 +19,18 @@ public class C_op extends FCommand {
 
     @Override
     public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
-        
+
         if (args.length < 1) {
             return false;
         }
-        
+
         final Player player = Bukkit.getServer().getPlayer(args[0]);
-        
+
         if (player == null) {
             sender.sendMessage(ChatColor.RED + "Player not found!");
             return true;
         }
-        
+
         FUtil.bcastMsg(ChatColor.AQUA + sender.getName() + " - Opping " + player.getName());
         player.setOp(true);
         return true;

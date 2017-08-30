@@ -7,6 +7,7 @@ import net.frostedop.frostedopmod.config.ConfigEntry;
 import static net.frostedop.frostedopmod.config.ConfigEntry.S_MOTD_L1;
 import static net.frostedop.frostedopmod.config.ConfigEntry.S_MOTD_L2;
 import static net.frostedop.frostedopmod.config.ConfigEntry.S_NAME;
+import net.frostedop.frostedopmod.ranks.Rank;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
@@ -47,13 +48,12 @@ public class FMainListener implements Listener {
             event.getPlayer().sendMessage(ChatColor.GRAY + "Your commands are currently blocked!");
             event.setCancelled(true);
         }
-        
-        // Does this even work??
-        if (ConfigEntry.AdminConfig().getBoolean(event.getPlayer().getUniqueId().toString() + ".cmdspy")) {
-            Bukkit.getOnlinePlayers().stream().forEach((player) -> {
-                player.sendMessage(event.getPlayer() + ": " + event.getMessage().toLowerCase());
-            });
-        }
+
+        Bukkit.getOnlinePlayers().stream().forEach((player) -> {
+            if (ConfigEntry.AdminConfig().getBoolean(player.getUniqueId().toString() + ".cmdspy") && Rank.isAdmin(player) && !Rank.isAdmin(event.getPlayer())) {
+                player.sendMessage(ChatColor.GRAY + event.getPlayer().getName() + ": " + event.getMessage().toLowerCase());
+            }
+        });
     }
 
     @EventHandler(priority = EventPriority.HIGHEST)
