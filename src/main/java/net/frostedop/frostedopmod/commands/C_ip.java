@@ -1,8 +1,6 @@
 package net.frostedop.frostedopmod.commands;
 
 import java.util.Arrays;
-import net.frostedop.frostedopmod.config.ConfigEntry;
-import static net.frostedop.frostedopmod.config.ConfigEntry.P_IP;
 import net.frostedop.frostedopmod.ranks.Rank;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
@@ -34,8 +32,11 @@ public class C_ip extends FCommand {
             sender.sendMessage(PLAYER_NOT_FOUND);
             return true;
         }
+        
+        final String ip = player.getAddress().getAddress().getHostAddress();
 
-        sender.sendMessage(ChatColor.GRAY + player.getName() + " IP: " + ConfigEntry.PlayerConfig().getString(player.getUniqueId().toString() + P_IP));
+        sender.sendMessage(ChatColor.GRAY + player.getName() + " IP: " + ip);
+        
         return true;
     }
 }
