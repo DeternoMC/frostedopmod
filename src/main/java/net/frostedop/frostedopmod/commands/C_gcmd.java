@@ -22,57 +22,48 @@ public class C_gcmd extends FCommand {
 
     @Override
     public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
-        
+
         if (!Rank.isAdmin(sender)) {
             sender.sendMessage(NO_PERM);
             return true;
         }
-        
-        if (args.length < 2)
-        {
+
+        if (args.length < 2) {
             return false;
         }
-        
+
         final Player player = getPlayer(args[0]);
-        
-        if (player == null)
-        {
+
+        if (player == null) {
             sender.sendMessage(ChatColor.RED + "Player not found!");
             return true;
         }
-        
+
         if (args[1].equals("command")) {
-            
-           final String outCommand = StringUtils.join(args, " ", 1, args.length);
-           
-           try
-        {
-            sender.sendMessage("Sending command as " + player.getName() + ": " + outCommand);
-            if (Bukkit.dispatchCommand(player, outCommand))
-            {
-                sender.sendMessage("Command sent.");
+
+            final String outCommand = StringUtils.join(args, " ", 1, args.length);
+
+            try {
+                sender.sendMessage("Sending command as " + player.getName() + ": " + outCommand);
+                if (Bukkit.dispatchCommand(player, outCommand)) {
+                    sender.sendMessage("Command sent.");
+                } else {
+                    sender.sendMessage("Unknown error sending command.");
+                }
+            } catch (Throwable ex) {
+                sender.sendMessage("Error sending command: " + ex.getMessage());
             }
-            else
-            {
-                sender.sendMessage("Unknown error sending command.");
-            }
+
         }
-        catch (Throwable ex)
-        {
-            sender.sendMessage("Error sending command: " + ex.getMessage());
-        }
-           
-        }
-        
+
         if (args[1].equals("message")) {
-            
-        final String message = StringUtils.join(args, " ", 1, args.length);
-        
-        sender.sendMessage(ChatColor.RED + "Successfully sent message.");
-        player.chat(message);
-        
+
+            final String message = StringUtils.join(args, " ", 1, args.length);
+
+            sender.sendMessage(ChatColor.RED + "Successfully sent message.");
+            player.chat(message);
+
         }
         return true;
     }
-    
 }

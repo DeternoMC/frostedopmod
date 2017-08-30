@@ -20,12 +20,11 @@ public class C_deop extends FCommand {
     }
 
     @Override
-    @SuppressWarnings("null") // why is this null?
     public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
 
         if (!Rank.isAdmin(sender)) {
             sender.sendMessage(NO_PERM);
-            return false;
+            return true;
         }
 
         if (args.length == 0) {
@@ -36,14 +35,11 @@ public class C_deop extends FCommand {
 
         if (player == null) {
             sender.sendMessage(ChatColor.RED + "Player not found!");
+            return true;
         }
 
         FUtil.bcastMsg(ChatColor.AQUA + sender.getName() + " - De-opping " + player.getName());
-
         player.setOp(false);
-
-        player.sendMessage(ChatColor.RED + "You are no longer OP!");
-
         return true;
     }
 }

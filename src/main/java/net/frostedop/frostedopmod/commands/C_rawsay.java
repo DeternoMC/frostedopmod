@@ -1,6 +1,5 @@
 package net.frostedop.frostedopmod.commands;
 
-import java.util.Collection;
 import net.frostedop.frostedopmod.FUtil;
 import static net.frostedop.frostedopmod.commands.FCommand.NO_PERM;
 import net.frostedop.frostedopmod.ranks.Rank;
@@ -9,12 +8,11 @@ import org.apache.commons.lang.StringUtils;
 import org.bukkit.Bukkit;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
-import org.bukkit.entity.Player;
 
 public class C_rawsay extends FCommand {
 
     public C_rawsay() {
-        super("rawsay", "/rawsay <message>", "raw msg");
+        super("rawsay", "/rawsay <message>", "rawsay");
     }
 
     @Override
@@ -22,18 +20,18 @@ public class C_rawsay extends FCommand {
 
         if (!Rank.isSeniorAdmin(sender)) {
             sender.sendMessage(NO_PERM);
+            return true;
+        }
+
+        if (args.length == 0) {
             return false;
         }
 
-        Collection<Player> online = (Collection<Player>) Bukkit.getOnlinePlayers();
-        final String message = StringUtils.join(ArrayUtils.subarray(args, 1, args.length), " ");
+        final String message = StringUtils.join(ArrayUtils.subarray(args, 0, args.length), " ");
 
-        if (args.length == 0) {
-            Bukkit.getOnlinePlayers().stream().forEach((player) -> {
-                player.sendMessage(FUtil.color(message));
-            });
-            return true;
-        }
+        Bukkit.getOnlinePlayers().stream().forEach((player) -> {
+            player.sendMessage(FUtil.color(message));
+        });
         return true;
     }
 }

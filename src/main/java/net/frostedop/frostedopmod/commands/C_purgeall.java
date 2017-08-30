@@ -35,7 +35,7 @@ public class C_purgeall extends FCommand {
             ConfigEntry.PlayerConfig().set(target.getUniqueId().toString() + ".cmdsblcked", false);
             return target;
         }).forEach((_item) -> {
-            ConfigFiles.getPlayer().reloadConfig();
+            ConfigFiles.getPlayer().saveConfig();
         });
         return true;
     }

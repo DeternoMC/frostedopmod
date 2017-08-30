@@ -37,7 +37,7 @@ public class FRankListener implements Listener {
             switch (Rank.getRank(player)) {
                 case SUPER_ADMIN: {
                     player.setPlayerListName(ChatColor.GOLD + "SA " + player.getName());
-                    ConfigEntry.AdminConfig().set(player.getUniqueId().toString() + ".tag", Rank.SUPER_ADMIN.getTag());
+                    ConfigEntry.PlayerConfig().set(player.getUniqueId().toString() + ".tag", Rank.SUPER_ADMIN.getTag());
                     ConfigFiles.getPlayer().saveConfig();
                     break;
                 }
@@ -49,25 +49,25 @@ public class FRankListener implements Listener {
                 }
                 case SENIOR_ADMIN: {
                     player.setPlayerListName(ChatColor.LIGHT_PURPLE + "SrA " + player.getName());
-                    ConfigEntry.AdminConfig().set(player.getUniqueId().toString() + ".tag", Rank.SENIOR_ADMIN.getTag());
+                    ConfigEntry.PlayerConfig().set(player.getUniqueId().toString() + ".tag", Rank.SENIOR_ADMIN.getTag());
                     ConfigFiles.getPlayer().saveConfig();
                     break;
                 }
                 case EXECUTIVE: {
                     player.setPlayerListName(ChatColor.YELLOW + "EXEC " + player.getName());
-                    ConfigEntry.AdminConfig().set(player.getUniqueId().toString() + ".tag", Rank.EXECUTIVE.getTag());
+                    ConfigEntry.PlayerConfig().set(player.getUniqueId().toString() + ".tag", Rank.EXECUTIVE.getTag());
                     ConfigFiles.getPlayer().saveConfig();
                     break;
                 }
                 case DEVELOPER: {
                     player.setPlayerListName(ChatColor.DARK_PURPLE + "Dev " + player.getName());
-                    ConfigEntry.AdminConfig().set(player.getUniqueId().toString() + ".tag", Rank.DEVELOPER.getTag());
+                    ConfigEntry.PlayerConfig().set(player.getUniqueId().toString() + ".tag", Rank.DEVELOPER.getTag());
                     ConfigFiles.getPlayer().saveConfig();
                     break;
                 }
                 case OWNER: {
                     player.setPlayerListName(ChatColor.BLUE + "Owner " + player.getName());
-                    ConfigEntry.AdminConfig().set(player.getUniqueId().toString() + ".tag", Rank.OWNER.getTag());
+                    ConfigEntry.PlayerConfig().set(player.getUniqueId().toString() + ".tag", Rank.OWNER.getTag());
                     ConfigFiles.getPlayer().saveConfig();
                     break;
                 }

@@ -32,5 +32,4 @@ public class C_admininformation extends FCommand {
 
         return true;
     }
-
 }

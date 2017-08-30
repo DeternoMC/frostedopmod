@@ -33,9 +33,7 @@ public class C_ip extends FCommand {
             return true;
         }
         
-        final String ip = player.getAddress().getAddress().getHostAddress();
-
-        sender.sendMessage(ChatColor.GRAY + player.getName() + " IP: " + ip);
+        sender.sendMessage(ChatColor.GRAY + player.getName() + " IP: " + player.getAddress().getAddress().getHostAddress());
         
         return true;
     }

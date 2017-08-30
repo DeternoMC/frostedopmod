@@ -22,13 +22,9 @@ public class C_deopall extends FCommand {
         }
 
         if (args.length == 0) {
-            Bukkit.getOnlinePlayers().stream().map((player) -> {
+            Bukkit.getOnlinePlayers().stream().forEach((player) -> {
                 player.sendMessage(ChatColor.AQUA + sender.getName() + " - De-opping all players on the server!");
-                return player;
-            }).map((player) -> {
                 player.sendMessage(DEOP);
-                return player;
-            }).forEach((player) -> {
                 player.setOp(false);
             });
             return true;

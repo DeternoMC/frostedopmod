@@ -42,7 +42,7 @@ public class C_admin extends FCommand {
                 return true;
             }
             final Player player = Bukkit.getPlayer(args[1]);
-            if (args.length == 1) {
+            if (args.length > 1) {
                 if (args[0].equals("telnet")) {
                     setTelnet(player, sender);
                     return true;

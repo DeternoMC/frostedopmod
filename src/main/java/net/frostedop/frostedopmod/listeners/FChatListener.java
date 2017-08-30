@@ -23,25 +23,21 @@ public class FChatListener implements Listener {
 
     @EventHandler
     public void onPlayerChat(AsyncPlayerChatEvent event) {
-        String UUID = event.getPlayer().getUniqueId().toString();
 
-        String tag = ConfigEntry.PlayerConfig().getString(UUID + P_TAG);
-        String displayname = event.getPlayer().getDisplayName();
-        String message = event.getMessage().trim();
-
-        if (ConfigEntry.PlayerConfig().getBoolean(UUID + P_MUTED)) {
+        if (ConfigEntry.PlayerConfig().getBoolean(event.getPlayer().getUniqueId().toString() + P_MUTED)) {
             event.getPlayer().sendMessage(ChatColor.GRAY + "You can't talk while muted!");
             event.setCancelled(true);
         }
-        
-        // ChatColor will be fixed at a later date <3
-        if (tag == null) {
+
+        if (ConfigEntry.PlayerConfig().getString(event.getPlayer().getUniqueId().toString() + P_TAG) == null) {
             String chatformat = color(
-                    ChatColor.GRAY + displayname + ChatColor.DARK_GRAY + " » " + ChatColor.GRAY + message);
+                    ChatColor.GRAY + event.getPlayer().getDisplayName() + ChatColor.DARK_GRAY + " » " + ChatColor.GRAY + event.getMessage().trim());
             event.setFormat(chatformat);
         } else {
             String chatformat = color(
-                    tag + " " + ChatColor.GRAY + displayname + ChatColor.DARK_GRAY + " » " + ChatColor.GRAY +  message);
+                    ConfigEntry.PlayerConfig().getString(event.getPlayer().getUniqueId().toString() + P_TAG) + " " +
+                            ChatColor.GRAY + event.getPlayer().getDisplayName() + ChatColor.DARK_GRAY + " » " + 
+                            ChatColor.GRAY + event.getMessage().trim());
             event.setFormat(chatformat);
         }
     }
