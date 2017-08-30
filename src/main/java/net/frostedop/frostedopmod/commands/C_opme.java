@@ -18,7 +18,7 @@ public class C_opme extends FCommand {
 
     @Override
     public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
-        
+
         if (!Rank.isAdmin(sender)) {
             sender.sendMessage(NO_PERM);
             return true;
@@ -30,5 +30,5 @@ public class C_opme extends FCommand {
         FUtil.bcastMsg(ChatColor.AQUA + sender.getName() + " - Opping " + sender.getName());
         sender.setOp(true);
         return true;
-    }  
+    }
 }

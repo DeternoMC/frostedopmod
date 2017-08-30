@@ -21,19 +21,19 @@ public class C_adminchat extends FCommand {
 
     @Override
     public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
-        
+
         if (!Rank.isAdmin(sender)) {
             sender.sendMessage(NO_PERM);
             return true;
         }
-        
+
         final String message = StringUtils.join(ArrayUtils.subarray(args, 0, args.length), " ");
-        
+
         Bukkit.getOnlinePlayers().stream().filter((player) -> (Rank.isAdmin(sender))).forEach((player) -> { // This is weird..
-            player.sendMessage("[" + ChatColor.AQUA + "STAFF" + ChatColor.WHITE + "] " + ChatColor.GRAY + " [" + Rank.getRank(sender).lmsg + ChatColor.GRAY + "] " 
-                            + ChatColor.DARK_RED + sender.getName() + ": " + message); // This should work?
-           
-        }); 
+            player.sendMessage("[" + ChatColor.AQUA + "STAFF" + ChatColor.WHITE + "] " + ChatColor.GRAY + "[" + Rank.getRank(sender).getColor() + Rank.getRank(sender).lmsg + ChatColor.GRAY + "] "
+                    + ChatColor.DARK_RED + sender.getName() + ChatColor.WHITE + ": " + ChatColor.AQUA + message); // This should work?
+
+        });
         return true;
     }
 }

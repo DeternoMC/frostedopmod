@@ -35,9 +35,9 @@ public class FChatListener implements Listener {
             event.setFormat(chatformat);
         } else {
             String chatformat = color(
-                    ConfigEntry.PlayerConfig().getString(event.getPlayer().getUniqueId().toString() + P_TAG) + " " +
-                            ChatColor.GRAY + event.getPlayer().getDisplayName() + ChatColor.DARK_GRAY + " » " + 
-                            ChatColor.GRAY + event.getMessage().trim());
+                    ConfigEntry.PlayerConfig().getString(event.getPlayer().getUniqueId().toString() + P_TAG) + " "
+                    + ChatColor.GRAY + event.getPlayer().getDisplayName() + ChatColor.DARK_GRAY + " » "
+                    + ChatColor.GRAY + event.getMessage().trim());
             event.setFormat(chatformat);
         }
     }

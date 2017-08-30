@@ -32,9 +32,9 @@ public class C_ip extends FCommand {
             sender.sendMessage(PLAYER_NOT_FOUND);
             return true;
         }
-        
+
         sender.sendMessage(ChatColor.GRAY + player.getName() + " IP: " + player.getAddress().getAddress().getHostAddress());
-        
+
         return true;
     }
 }

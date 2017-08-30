@@ -12,7 +12,6 @@ import org.bukkit.entity.Player;
  *
  * @author Savnith
  */
-
 // Make this command so admins can change OP's gamemode
 public class C_spectator extends FCommand {
 
@@ -22,12 +21,12 @@ public class C_spectator extends FCommand {
 
     @Override
     public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
-        
+
         if (!Rank.isAdmin(sender)) {
             sender.sendMessage(NO_PERM);
             return true;
         }
-        
+
         if (args.length == 0) {
             sender.sendMessage(ChatColor.YELLOW + "You are now in Spectator!");
             ((Player) sender).setGameMode(GameMode.SPECTATOR);

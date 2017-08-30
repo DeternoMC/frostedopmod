@@ -7,28 +7,30 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
 public enum Rank {
-    IMPOSTOR("a", "Impostor", "IMP", ChatColor.YELLOW),
-    NON_OP("a", "Non-Op", "", ChatColor.WHITE),
-    OP("an", "Operator", "", ChatColor.RED),
-    SUPER_ADMIN("a", "Super Admin", "Super Admin", ChatColor.GOLD),
-    TELNET_ADMIN("a", "Telnet Admin", "Telnet Admin", ChatColor.DARK_GREEN),
-    SENIOR_ADMIN("a", "Senior Admin", "Senior Admin", ChatColor.LIGHT_PURPLE),
-    EXECUTIVE("a", "", "Executive", ChatColor.YELLOW),
-    DEVELOPER("a", "Developer", "Dev", ChatColor.DARK_PURPLE),
-    MASTER_BUILDER("a", "Master Builder", "Master Builder", ChatColor.GOLD),
-    OWNER("the", "Owner", "Owner", ChatColor.BLUE),
-    CONSOLE("the", "Console", "Console", ChatColor.DARK_PURPLE);
+    IMPOSTOR("a", "Impostor", "IMP", ChatColor.YELLOW, "&e"),
+    NON_OP("a", "Non-Op", "", ChatColor.WHITE, "&f"),
+    OP("an", "Operator", "", ChatColor.RED, "&c"),
+    MASTER_BUILDER("a", "Master Builder", "Master Builder", ChatColor.GOLD, "&6"),
+    SUPER_ADMIN("a", "Super Admin", "Super Admin", ChatColor.GOLD, "&6"),
+    TELNET_ADMIN("a", "Telnet Admin", "Telnet Admin", ChatColor.DARK_GREEN, "&2"),
+    SENIOR_ADMIN("a", "Senior Admin", "Senior Admin", ChatColor.LIGHT_PURPLE, "&d"),
+    EXECUTIVE("a", "", "Executive", ChatColor.YELLOW, "&e"),
+    DEVELOPER("a", "Developer", "Dev", ChatColor.DARK_PURPLE, "&5"),
+    OWNER("the", "Owner", "Owner", ChatColor.BLUE, "&9"),
+    CONSOLE("the", "Console", "Console", ChatColor.DARK_PURPLE, "&5");
 
     public final String lmsg_pre;
     public final String lmsg;
     public final String tag;
     public final ChatColor rankcolor;
+    public final String code;
 
-    private Rank(String lmsg_pre, String lmsg, String tag, ChatColor rankcolor) {
+    private Rank(String lmsg_pre, String lmsg, String tag, ChatColor rankcolor, String code) {
         this.lmsg_pre = lmsg_pre;
         this.lmsg = lmsg;
         this.tag = tag;
         this.rankcolor = rankcolor;
+        this.code = code;
     }
 
     public boolean isAtLeast(Rank rank) {
@@ -43,12 +45,20 @@ public enum Rank {
         return rankcolor;
     }
 
+    public String getColorCode() {
+        return code;
+    }
+
     public String getLoginMessage() {
         return lmsg_pre + " " + getColor() + lmsg;
     }
 
     public String getTag() {
         return ChatColor.DARK_GRAY + "[" + getColor() + tag + ChatColor.DARK_GRAY + "]";
+    }
+
+    public String getRawTag() {
+        return "&8[" + getColorCode() + tag + "&8]";
     }
 
     public static Rank getRank(Player player) {
@@ -94,7 +104,7 @@ public enum Rank {
 
         return Rank.CONSOLE;
     }
-    
+
     // TODO: find a cleaner way to do this 
     public static boolean isImpostor(Player player) {
         return getRank(player) == Rank.IMPOSTOR;
