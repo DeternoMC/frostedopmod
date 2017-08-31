@@ -14,6 +14,7 @@ import net.frostedop.frostedopmod.listeners.FPlayerListener;
 import net.frostedop.frostedopmod.listeners.FRankListener;
 import net.frostedop.frostedopmod.worlds.WorldManager;
 import org.bukkit.Bukkit;
+import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.bukkit.scheduler.BukkitRunnable;
@@ -36,8 +37,7 @@ public class FrostedOPMod extends JavaPlugin {
         FLog.info("Created by: Savnith");
         FLog.info("Plugin State: " + FUtil.NOT_STABLE);
 
-        // Start Services
-        FAnnouncer.Broadcast(this);
+        // Start Main Services
         this.weather();
         new WorldEditBridge();
         new WorldManager();
@@ -49,6 +49,29 @@ public class FrostedOPMod extends JavaPlugin {
         new FRankListener();
         new FCommandLoader();
         new FBanListener();
+
+        try {
+            
+            if (ConfigEntry.MainConfig().getBoolean("announcer.enabled")) {
+                FAnnouncer.Broadcast(this);
+            } else {
+                // ignore this
+            }
+        } catch (Exception e) {
+            FLog.severe(e);
+        }
+        
+        if (!Bukkit.getPluginManager().isPluginEnabled("WorldEdit")) {
+            FLog.info("WorldEdit cannot be found, expect errors!");
+        }
+
+        // If the player is a imposter add them.
+        for (Player player : Bukkit.getOnlinePlayers()) {
+            FileConfiguration config = ConfigFiles.getAdmins().getConfig();
+            if (config.getBoolean(player.getUniqueId().toString() + ".imposter")) {
+                FUtil.imposters.add(player.getName());
+            }
+        }
     }
 
     @Override

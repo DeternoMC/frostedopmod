@@ -7,6 +7,7 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
 public enum Rank {
+    
     IMPOSTOR("a", "Impostor", "IMP", ChatColor.YELLOW, "&e"),
     NON_OP("a", "Non-Op", "", ChatColor.WHITE, "&f"),
     OP("an", "Operator", "", ChatColor.RED, "&c"),

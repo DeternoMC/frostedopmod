@@ -1,9 +1,6 @@
 package net.frostedop.frostedopmod;
 
 import net.frostedop.frostedopmod.config.ConfigEntry;
-import static net.frostedop.frostedopmod.config.ConfigEntry.A_DELAY;
-import static net.frostedop.frostedopmod.config.ConfigEntry.A_MESSAGES;
-import static net.frostedop.frostedopmod.config.ConfigEntry.A_PREFIX;
 import org.bukkit.plugin.Plugin;
 import org.bukkit.scheduler.BukkitRunnable;
 
@@ -15,18 +12,18 @@ public class FAnnouncer {
 
             @Override
             public void run() {
-                if (this.number >= ConfigEntry.MainConfig().getStringList(A_MESSAGES).size()) {
+                if (this.number >= ConfigEntry.MainConfig().getStringList("announcer.messages").size()) {
                     this.number = 0;
                 }
 
-                String prefix = ConfigEntry.MainConfig().getString(A_PREFIX);
+                String prefix = ConfigEntry.MainConfig().getString("announcer.prefix");
                 String message_color = ConfigEntry.MainConfig().getString("announcer.message-color");
-                String message = (String) ConfigEntry.MainConfig().getStringList(A_MESSAGES).get(this.number);
+                String message = (String) ConfigEntry.MainConfig().getStringList("announcer.messages").get(this.number);
 
                 this.number += 1;
 
                 FUtil.bcastMsg(FUtil.color(prefix + " " + message_color + message));
             }
-        }.runTaskTimer(pl, 100L, 20 * pl.getConfig().getInt(A_DELAY));
+        }.runTaskTimer(pl, 100L, 20 * pl.getConfig().getInt("announcer.delay"));
     }
 }

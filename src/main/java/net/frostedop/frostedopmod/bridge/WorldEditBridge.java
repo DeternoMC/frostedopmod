@@ -31,22 +31,22 @@ public class WorldEditBridge {
         return worldedit;
     }
 
-    public static void setLimit(Player player, int limit) {
+    public static void setLimit(Player p, int l) {
 
-        final LocalSession s = getWorldEditSession(player);
+        final LocalSession s = getWorldEditSession(p);
 
         if (s != null) {
-            s.setBlockChangeLimit(limit);
+            s.setBlockChangeLimit(l);
         }
     }
 
-    private static LocalSession getWorldEditSession(Player player) {
+    private static LocalSession getWorldEditSession(Player p) {
 
         final WorldEditPlugin wep = getWorldEdit();
         if (wep == null) {
             return null;
         }
 
-        return wep.getSession(player);
+        return wep.getSession(p);
     }
 }

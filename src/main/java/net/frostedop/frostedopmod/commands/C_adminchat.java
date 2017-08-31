@@ -8,6 +8,7 @@ import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
+import org.bukkit.entity.Player;
 
 /**
  *
@@ -29,11 +30,13 @@ public class C_adminchat extends FCommand {
 
         final String message = StringUtils.join(ArrayUtils.subarray(args, 0, args.length), " ");
 
-        Bukkit.getOnlinePlayers().stream().filter((player) -> (Rank.isAdmin(sender))).forEach((player) -> { // This is weird..
-            player.sendMessage("[" + ChatColor.AQUA + "STAFF" + ChatColor.WHITE + "] " + ChatColor.GRAY + "[" + Rank.getRank(sender).getColor() + Rank.getRank(sender).lmsg + ChatColor.GRAY + "] "
-                    + ChatColor.DARK_RED + sender.getName() + ChatColor.WHITE + ": " + ChatColor.AQUA + message); // This should work?
+        for (Player admin : Bukkit.getOnlinePlayers()) {
 
-        });
+            if (Rank.isAdmin(admin)) {
+                admin.sendMessage("[" + ChatColor.AQUA + "STAFF" + ChatColor.WHITE + "] " + ChatColor.GRAY + "[" + Rank.getRank(sender).getColor() + Rank.getRank(sender).lmsg + ChatColor.GRAY + "] "
+                        + ChatColor.DARK_RED + sender.getName() + ChatColor.WHITE + ": " + ChatColor.AQUA + message);
+            }
+        }
         return true;
     }
 }

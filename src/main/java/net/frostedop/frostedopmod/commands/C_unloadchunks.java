@@ -22,15 +22,10 @@ public class C_unloadchunks extends FCommand {
     public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
 
         FUtil.bcastMsg(sender.getName() + " - Unloading unused chunks");
-
         int numChunks = 0;
-
-        for (World world : Bukkit.getWorlds()) {
-            numChunks += unloadUnusedChunks(world);
-        }
-
+        numChunks = Bukkit.getWorlds().stream().map((world) -> unloadUnusedChunks(world)).reduce(numChunks, Integer::sum);
         Player player = (Player) sender;
-
+        //
         player.sendMessage(numChunks + " chunks unloaded.");
         return true;
     }
@@ -48,5 +43,4 @@ public class C_unloadchunks extends FCommand {
 
         return numChunks;
     }
-
 }

@@ -1,6 +1,7 @@
 package net.frostedop.frostedopmod;
 
 import java.io.File;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import org.bukkit.Bukkit;
@@ -12,6 +13,7 @@ public class FUtil {
     public static final List<String> MASTERBUILDERS = Arrays.asList("");
     public static final String STABLE = "Stable";
     public static final String NOT_STABLE = "Not Stable";
+    public static ArrayList<String> imposters = new ArrayList<>();
 
     private FUtil() {
 

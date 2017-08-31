@@ -48,16 +48,21 @@ public class FMainListener implements Listener {
             event.getPlayer().sendMessage(ChatColor.GRAY + "Your commands are currently blocked!");
             event.setCancelled(true);
         }
+        
+        
+        for (Player admin : Bukkit.getOnlinePlayers()) {
 
-        Bukkit.getOnlinePlayers().stream().forEach((player) -> {
-            if (ConfigEntry.AdminConfig().getBoolean(player.getUniqueId().toString() + ".cmdspy") && Rank.isAdmin(player) && !Rank.isAdmin(event.getPlayer())) {
-                player.sendMessage(ChatColor.GRAY + event.getPlayer().getName() + ": " + event.getMessage().toLowerCase());
+            if (ConfigEntry.AdminConfig().getBoolean(admin.getUniqueId().toString() + ".cmdspy"))  {
+                if (Rank.isAdmin(admin)) {
+                    admin.sendMessage(ChatColor.GRAY + event.getPlayer().getName() + ": " + event.getMessage().toLowerCase());
+                }
             }
-        });
+        }
     }
 
     @EventHandler(priority = EventPriority.HIGHEST)
-    public void onServerPing(ServerListPingEvent event) {
+    public void onServerPing(ServerListPingEvent event
+    ) {
 
         if (Arrays.asList(Bukkit.getOnlinePlayers()).size() >= Bukkit.getMaxPlayers()) {
             event.setMotd(FUtil.color(ConfigEntry.MainConfig().getString("server.motd-full-server").replace("%servername%", ConfigEntry.MainConfig().getString("server.name"))));

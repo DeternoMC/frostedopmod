@@ -23,45 +23,47 @@ public class FRankListener implements Listener {
 
     @EventHandler
     public void onPlayerJoin(PlayerJoinEvent event) {
+        
         final Player player = event.getPlayer();
-        if (Rank.isImpostor(player)) {
-            FUtil.bcastMsg(player.getName() + " is " + Rank.getRank(player).getLoginMessage(), ChatColor.AQUA);
-            player.setPlayerListName(Rank.getRank(player).getColor() + "IMP " + player.getName());
-            ConfigEntry.AdminConfig().set(player.getUniqueId().toString() + ".tag", Rank.getRank(player).getRawTag());
-            ConfigFiles.getPlayer().saveConfig();
-        } else if (Rank.isAdmin(player)) {
-            FUtil.bcastMsg(player.getName() + " is " + Rank.getRank(player).getLoginMessage(), ChatColor.AQUA);
-            ConfigEntry.AdminConfig().set(player.getUniqueId().toString() + ".tag", Rank.getRank(player).getRawTag());
-            ConfigFiles.getPlayer().saveConfig();
 
-            switch (Rank.getRank(player)) {
-                case SUPER_ADMIN: {
-                    player.setPlayerListName(ChatColor.GOLD + "SA " + player.getName());
-                    break;
-                }
-                case TELNET_ADMIN: {
-                    player.setPlayerListName(ChatColor.DARK_GREEN + "STA " + player.getName());
-                    break;
-                }
-                case SENIOR_ADMIN: {
-                    player.setPlayerListName(ChatColor.LIGHT_PURPLE + "SrA " + player.getName());
-                    break;
-                }
-                case EXECUTIVE: {
-                    player.setPlayerListName(ChatColor.YELLOW + "EXEC " + player.getName());
-                    break;
-                }
-                case DEVELOPER: {
-                    player.setPlayerListName(ChatColor.DARK_PURPLE + "Dev " + player.getName());
-                    break;
-                }
-                case OWNER: {
-                    player.setPlayerListName(ChatColor.BLUE + "Owner " + player.getName());
-                    break;
-                }
-                default: {
-                    break;
-                }
+        switch (Rank.getRank(player)) {
+            case IMPOSTOR: {
+                player.setPlayerListName(ChatColor.YELLOW + "IMP " + player.getName());
+                ConfigEntry.PlayerConfig().set(player.getUniqueId().toString() + ".tag", Rank.IMPOSTOR.getRawTag());
+                break;
+            }
+            case SUPER_ADMIN: {
+                player.setPlayerListName(ChatColor.GOLD + "SA " + player.getName());
+                ConfigEntry.PlayerConfig().set(player.getUniqueId().toString() + ".tag", Rank.SUPER_ADMIN.getRawTag());
+                break;
+            }
+            case TELNET_ADMIN: {
+                player.setPlayerListName(ChatColor.DARK_GREEN + "STA " + player.getName());
+                ConfigEntry.PlayerConfig().set(player.getUniqueId().toString() + ".tag", Rank.TELNET_ADMIN.getRawTag());
+                break;
+            }
+            case SENIOR_ADMIN: {
+                player.setPlayerListName(ChatColor.LIGHT_PURPLE + "SrA " + player.getName());
+                ConfigEntry.PlayerConfig().set(player.getUniqueId().toString() + ".tag", Rank.SENIOR_ADMIN.getRawTag());
+                break;
+            }
+            case EXECUTIVE: {
+                player.setPlayerListName(ChatColor.YELLOW + "EXEC " + player.getName());
+                ConfigEntry.PlayerConfig().set(player.getUniqueId().toString() + ".tag", Rank.EXECUTIVE.getRawTag());
+                break;
+            }
+            case DEVELOPER: {
+                player.setPlayerListName(ChatColor.DARK_PURPLE + "Dev " + player.getName());
+                ConfigEntry.PlayerConfig().set(player.getUniqueId().toString() + ".tag", Rank.DEVELOPER.getRawTag());
+                break;
+            }
+            case OWNER: {
+                player.setPlayerListName(ChatColor.BLUE + "Owner " + player.getName());
+                ConfigEntry.PlayerConfig().set(player.getUniqueId().toString() + ".tag", Rank.OWNER.getRawTag());
+                break;
+            }
+            default: {
+                break;
             }
         }
     }

@@ -31,12 +31,8 @@ public class C_reload extends FCommand {
         }
 
         FUtil.bcastMsg(ChatColor.GREEN + sender.getName() + " - Reloading the server.");
-
         Bukkit.reload();
-
         FUtil.bcastMsg(ChatColor.RED + "Reload Complete.");
-
         return true;
     }
-
 }

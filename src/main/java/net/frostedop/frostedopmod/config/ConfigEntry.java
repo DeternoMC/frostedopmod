@@ -12,24 +12,12 @@ public class ConfigEntry {
     public static final String L_FORUM_LINK = "server.forumlink";
     public static final String L_FORUM_DAYS = "server.forumdays";
     public static final String S_BAN_URL = "server.gtfo-url";
-    public static final String A_ENABLED = "announcer.enabled";
-    public static final String A_PREFIX = "announcer.prefix";
-    public static final String A_MESSAGES = "announcer.messages";
-    public static final String A_DELAY = "announcer.delay";
     public static final String T_AUTODAY = "toggles.autoday";
     public static final String T_NO_RAIN = "toggles.no-rain";
     public static final String F_DJUMP = "fun.djump";
     public static final String D_CMDBLOCK = "disabled.cmdblock";
     public static final String D_LAVAPLACE = "disabled.lava-place";
     public static final String D_WATERPLACE = "disabled.water-place";
-    // player config
-    public static final String P_NAME = ".name";
-    public static final String P_IP = ".ip";
-    public static final String P_MUTED = ".muted";
-    public static final String P_CHATCOLOR = ".chatcolor";
-    public static final String P_CMDSBLOCKED = ".cmdsblcked";
-    public static final String P_FROZEN = ".frozen";
-    public static final String P_TAG = ".tag";
 
     public static final FileConfiguration PlayerConfig() {
         return ConfigFiles.getPlayer().getConfig();
