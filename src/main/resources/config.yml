@@ -13,6 +13,8 @@ server:
     forumdays: "10"
     perm-ban-url: "https://goo.gl/egcCpw"
     gtfo-url: "https://goo.gl/egcCpw"
+    lockdown: false
+    adminmode: false
 
 ## All server Announcements ##
 announcer:
