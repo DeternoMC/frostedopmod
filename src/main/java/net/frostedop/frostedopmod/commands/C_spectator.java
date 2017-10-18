@@ -16,11 +16,11 @@ import org.bukkit.entity.Player;
 public class C_spectator extends FCommand {
 
     public C_spectator() {
-        super("spectator", "/spectator <player>", Arrays.asList("spec"));
+        super("spectator", "/spectator <player>", "", Arrays.asList("spec"));
     }
 
     @Override
-    public boolean onCommand(CommandSender sender, Command cmd, Player playerSender, String label, String[] args) {
+    public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
 
         if (!Rank.isAdmin(sender)) {
             sender.sendMessage(NO_PERM);
