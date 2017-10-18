@@ -12,15 +12,15 @@ import org.bukkit.entity.Player;
  *
  * @author Savnith
  */
-// Make this command so admins can change OP's gamemode
+
 public class C_spectator extends FCommand {
 
     public C_spectator() {
-        super("spectator", "/spectator", "", Arrays.asList("spec"));
+        super("spectator", "/spectator <player>", Arrays.asList("spec"));
     }
 
     @Override
-    public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
+    public boolean onCommand(CommandSender sender, Command cmd, Player playerSender, String label, String[] args) {
 
         if (!Rank.isAdmin(sender)) {
             sender.sendMessage(NO_PERM);
@@ -31,6 +31,19 @@ public class C_spectator extends FCommand {
             sender.sendMessage(ChatColor.YELLOW + "You are now in Spectator!");
             ((Player) sender).setGameMode(GameMode.SPECTATOR);
         }
+        return true;
+        
+    }
+        final Player player = getPlayer(args[0]);
+
+        if (player == null) {
+            sender.sendMessage(ChatColor.RED + "Player not found!");
+            return true;
+        }
+            sender.sendMessage(ChatColor.YELLOW + "Setting " + player.getName() + " to game mode spectator");
+            player.sendMessage(ChatColor.YELLOW + sender.getName() + " set your game mode to spectator");
+            ((Player) player).setGameMode(GameMode.SPECTATOR);
+
         return true;
     }
 }
