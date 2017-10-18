@@ -13,7 +13,7 @@ import org.bukkit.entity.Player;
  */
 public class C_op extends FCommand {
 
-    public C_op(String command) {
+    public C_op() {
         super("op", "/op <player>", "Op someone!");
     }
 
