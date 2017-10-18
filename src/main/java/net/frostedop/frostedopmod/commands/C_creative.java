@@ -14,11 +14,11 @@ import org.bukkit.entity.Player;
 public class C_creative extends FCommand {
 
     public C_creative() {
-        super("creative", "/creative <player>", Arrays.asList("gmc"));
+        super("creative", "/creative <player>", "", Arrays.asList("gmc"));
     }
 
     @Override
-    public boolean onCommand(CommandSender sender, Command cmd, Player playersender, String label, String[] args) {
+    public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
 
         if (args.length == 0) {
             sender.sendMessage(ChatColor.YELLOW + "You are now in GMC!");
@@ -28,6 +28,11 @@ public class C_creative extends FCommand {
     }
         final Player player = getPlayer(args[0]);
 
+        if (!Rank.isAdmin(sender)) {
+            sender.sendMessage(NO_PERM);
+            return true;
+        }
+    
         if (player == null) {
             sender.sendMessage(ChatColor.RED + "Player not found!");
             return true;
