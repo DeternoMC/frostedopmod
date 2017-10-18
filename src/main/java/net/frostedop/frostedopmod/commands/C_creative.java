@@ -14,11 +14,11 @@ import org.bukkit.entity.Player;
 public class C_creative extends FCommand {
 
     public C_creative() {
-        super("creative", "/creative", "", Arrays.asList("gmc"));
+        super("creative", "/creative <player>", Arrays.asList("gmc"));
     }
 
     @Override
-    public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
+    public boolean onCommand(CommandSender sender, Command cmd, Player playersender, String label, String[] args) {
 
         if (args.length == 0) {
             sender.sendMessage(ChatColor.YELLOW + "You are now in GMC!");
@@ -26,4 +26,16 @@ public class C_creative extends FCommand {
         }
         return true;
     }
-}
+        final Player player = getPlayer(args[0]);
+
+        if (player == null) {
+            sender.sendMessage(ChatColor.RED + "Player not found!");
+            return true;
+        }
+            sender.sendMessage(ChatColor.YELLOW + "Setting " + player.getName() + " to game mode creative");
+            player.sendMessage(ChatColor.YELLOW + sender.getName() + " set your game mode to creative");
+            ((Player) player).setGameMode(GameMode.CREATIVE);
+
+        return true;
+    }
+}    
