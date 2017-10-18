@@ -8,14 +8,14 @@ import org.bukkit.entity.Player;
 
 public enum Rank {
     
-    IMPOSTOR("a", "Impostor", "IMP", ChatColor.YELLOW, "&e"),
+    IMPOSTOR("an", "Impostor", "IMP", ChatColor.YELLOW, "&e"),
     NON_OP("a", "Non-Op", "", ChatColor.WHITE, "&f"),
     OP("an", "Operator", "", ChatColor.RED, "&c"),
     MASTER_BUILDER("a", "Master Builder", "Master Builder", ChatColor.GOLD, "&6"),
     SUPER_ADMIN("a", "Super Admin", "Super Admin", ChatColor.GOLD, "&6"),
     TELNET_ADMIN("a", "Telnet Admin", "Telnet Admin", ChatColor.DARK_GREEN, "&2"),
     SENIOR_ADMIN("a", "Senior Admin", "Senior Admin", ChatColor.LIGHT_PURPLE, "&d"),
-    EXECUTIVE("a", "", "Executive", ChatColor.YELLOW, "&e"),
+    EXECUTIVE("an", "", "Executive", ChatColor.YELLOW, "&e"),
     DEVELOPER("a", "Developer", "Dev", ChatColor.DARK_PURPLE, "&5"),
     OWNER("the", "Owner", "Owner", ChatColor.BLUE, "&9"),
     CONSOLE("the", "Console", "Console", ChatColor.DARK_PURPLE, "&5");
