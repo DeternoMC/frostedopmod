@@ -42,7 +42,7 @@ public class C_fopmr extends FCommand {
             sender.sendMessage(FUtil.color("&b&lThis is FrostedOPMod: Remastered!"));
             sender.sendMessage(FUtil.color("&3&lVersion: &bBeta: 3.0.1, "));
             sender.sendMessage(FUtil.color("&3&lPlugin State: &b" + FUtil.NOT_STABLE)); // Beta versions are unstable till it is fully finished.
-            sender.sendMessage(FUtil.color("&3&lMade by: &bSavnith"));
+            sender.sendMessage(FUtil.color("&3&lMade by: &bSavnith&3, &bHitzzForSenior &3and &bFocusvity"));
             sender.sendMessage(FUtil.color("&8&m--------------------------------"));
 
             return true;
