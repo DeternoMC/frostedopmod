@@ -22,7 +22,7 @@ announcer:
     enabled: true
     
     ## What is the prefix to the Announcer ##
-    prefix: "&bFrostedOP&8 >"
+    prefix: "&bFrostedOP &8>"
     
     ## Time delay in sec ##
     delay: 180
@@ -99,3 +99,4 @@ famous_players:
   - dantdm
   - gizzy14gazza
   - furiousdestroyer
+  - markbyron
