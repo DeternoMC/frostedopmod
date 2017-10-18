@@ -48,7 +48,7 @@ public class C_adminmode extends FCommand {
             }
             
             if (args[0].equals("off")) {
-                sender.sendMessage(ChatColor.GRAY + "Lockdown mode has been disabled!");
+                sender.sendMessage(ChatColor.GRAY + "Adminmode mode has been disabled!");
                 ConfigEntry.MainConfig().set("server.adminmode", false);
                 ConfigFiles.getMConfig().saveConfig();
                 bcastMsg(ChatColor.RED + "Adminmode has been disabled!");
