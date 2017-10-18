@@ -14,11 +14,11 @@ import org.bukkit.entity.Player;
 public class C_survival extends FCommand {
 
     public C_survival() {
-        super("survival", "/survival <player>", Arrays.asList("gms"));
+        super("survival", "/survival <player>", "", Arrays.asList("gms"));
     }
 
     @Override
-    public boolean onCommand(CommandSender sender, Command cmd, Player playersender, String label, String[] args) {
+    public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
 
         if (args.length == 0) {
             sender.sendMessage(ChatColor.YELLOW + "You are now in GMS!");
@@ -27,7 +27,12 @@ public class C_survival extends FCommand {
         return true;
     }
         final Player player = getPlayer(args[0]);
-
+    
+        if (!Rank.isAdmin(sender)) {
+            sender.sendMessage(NO_PERM);
+            return true;
+        }
+    
         if (player == null) {
             sender.sendMessage(ChatColor.RED + "Player not found!");
             return true;
