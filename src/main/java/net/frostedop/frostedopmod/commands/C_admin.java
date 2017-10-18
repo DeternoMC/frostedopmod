@@ -37,7 +37,7 @@ public class C_admin extends FCommand {
             return true;
         } else if (args[0].equals("setrank")) {
             if (args.length == 0) {
-                sender.sendMessage("Usage: /admin setrank [telnet - senior] <player>");
+                sender.sendMessage("Usage: /admin setrank [telnet / senior] <player>");
                 return true;
             }
             final Player player = Bukkit.getPlayer(args[1]);
